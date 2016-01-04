@@ -1,4 +1,4 @@
-# ANTISTEAL
+# Antisteal
 
 Antisteal is a collection of lightweight applications for bidirectional control
 of house alarm systems (this includes receiving alerts, but also sending
@@ -15,7 +15,7 @@ There are two types of applications - the "alarm integrators", which exchange
 messages with the alarm system and the "alarm consumers" which handle alerts or
 send commands to the "alarm integrators".
 
-To facilitate communications, beanstalkd (http://kr.github.io/beanstalkd/) is
+To facilitate communications, [beanstalkd](http://kr.github.io/beanstalkd/) is
 used as a lightweight work queue for exchanging messages between applications.
 
 This design makes it easy(ish) to add support for different alarm systems/IP
@@ -39,6 +39,8 @@ Dependencies:
     pip install pyyaml
     pip install beanstalkc
 
+Tested on UNIX platforms - in theory it might run OK on Windows, feel free to
+submit pull requests fixing any OS compatibility issues if this floats your boat.
 
 # Running
 
@@ -57,6 +59,9 @@ Launch the alarm daemon:
 
 Launch the consumer applications (you can run as many or as few of these
 applications to meet your requirements):
+
+    # For debugging/testing
+    ./cli.py
 
     # For SMS alerting
     ./smsd.py
@@ -81,7 +86,7 @@ The event tubes (queues in beanstalkd speak) contain messages from the alarm
 integrator application for all events reported by the alarm system. These take
 the form of the following JSON message:
 
-    {"type": "alarm", "raw": "123ABC", "code": "123", "message": "event details string"}
+    {"type": "alarm", "code": "123", "message": "event details string", "raw": "123ABC", }
 
 Because alarm systems are complex beasts with many hundreds of response types,
 we also add a type field indicating the nature of the event. You can then choose
@@ -98,10 +103,13 @@ The following are the acceptable types:
 | ------------- |----------------------------------------------------|
 | command       | Echo of any commands issued via the command tubes. |
 | info          | Info/status messages from the alarm                |
+| armed         | Alarm is now armed (includes in delay arming)      |
+| disarmed      | Alarm is now disarmed                              |
 | response      | Responses to commands (eg acks)                    |
 | alarm         | An alarm has been triggered.                       |
 | recovery      | An alarm condition has recovered.                  |
 | fault         | A fault has occurred (eg phone down, power outage) |
+| unknown       | Ummmm dunno... Flux capacitor on fire?             |
 
 
 
@@ -129,15 +137,34 @@ systems, whilst still being able to fire native commands as required.
 | police        | Trigger the panic alarm (for police)              |
 
 
+# Application Security
+
+There's no security/authentication between the components. The intention of this
+design is that you run all the applications on a small embedded dedicated alarm
+computer (like a Raspberry Pi) or on some VM/container where only trusted
+applications will be present and able to talk to the beanstalkd service. The
+beanstalkd instance should NEVER be listening on a network reachable port, make
+sure you always run it on localhost only.
+
+All security/validation/encryption should take place in your alarm consumers
+which take actions with the various events triggered. Some are easy, if you're
+doing purely push-only (eg trigger an SMS) the security is simple, but if you're
+accepting commands from an HTTP endpoint or app, you need to think carefully
+about user validation and potentially command/input validation as well.
+
+
 # About
 
 Written by Jethro Carr primarily to support an Envisalink EVL-4 with a DSC
 PowerSeries alarm, however the design should make it adaptable for other
 system in future.
 
-Credit to dumbo25 for the original Envisalink code at
-(https://github.com/dumbo25/ev3_cmd) which has formed the base of the
-Envisalink integration.
+Credit to @dumbo25 for the original Envisalink code at
+https://github.com/dumbo25/ev3_cmd which has formed the base of the
+Envisalink integration in `envisalinkd.py`
+
+Pull requests including docs, bug fixes, new alarm support, new alarm consumers,
+etc always welcome.
 
 
 # License
