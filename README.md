@@ -1,6 +1,6 @@
-# Antisteal
+# itsalarming
 
-Antisteal is a collection of lightweight applications for bidirectional control
+itsalarming is a collection of lightweight applications for bidirectional control
 of house alarm systems (this includes receiving alerts, but also sending
 instructions) making it easy to integrate alarm IP modules with other systems
 and writing various support applications.

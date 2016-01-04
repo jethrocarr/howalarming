@@ -25,7 +25,7 @@ import json
 import yaml			# requires pyyaml third party package
 import beanstalkc	# requires beanstalkc third party package
 
-class AntistealCLI:
+class Itsalarming:
 	def __init__(self):
 		# Load configuration from YAML file and assign configuration values.
 		try:
@@ -90,7 +90,7 @@ class AntistealCLI:
 					smtp_message += 'To: '+ self.addr_to +'\r\n'
 					smtp_message += 'Subject: ['+ alarm_event['type'] +'] '+ alarm_event['message'] +'\r\n'
 					smtp_message += 'Date: '+ email.utils.formatdate() +'\r\n'
-					smtp_message += 'Message-Id: '+ email.utils.make_msgid('antisteal_alerter') +'\r\n'
+					smtp_message += 'Message-Id: '+ email.utils.make_msgid('itsalarming_alerter') +'\r\n'
 					smtp_message += '\r\n'
 					smtp_message += job.body +'\r\n'
 
@@ -109,7 +109,7 @@ class AntistealCLI:
 
 if __name__ == '__main__':
 		try:
-			c = AntistealCLI()
+			c = Itsalarming()
 			c.beanstalk_connect()
 
 			print 'system: ready to send emails!'

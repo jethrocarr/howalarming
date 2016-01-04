@@ -16,7 +16,7 @@ import threading
 import yaml			# requires pyyaml third party package
 import beanstalkc	# requires beanstalkc third party package
 
-class AntistealCLI:
+class ItsalarmingCLI:
 	def __init__(self):
 		# Load configuration from YAML file and assign configuration values.
 		try:
@@ -91,7 +91,7 @@ class AntistealCLI:
 
 if __name__ == '__main__':
 		try:
-			c = AntistealCLI()
+			c = ItsalarmingCLI()
 			c.beanstalk_connect()
 
 			print "system: type commands and enter with newline to send them"
