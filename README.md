@@ -46,7 +46,9 @@ submit pull requests fixing any OS compatibility issues if this floats your boat
 
 All the applications run in foreground mode. The following commands allow you
 to launch them manually, but you'll probably want to launch them with something
-like systemd which will deal with logging and restarts much more nicely.
+like systemd which will deal with logging and restarts much more nicely,
+especially since some error coditions like socket timeout with beanstalk or the
+alarm will result in the app dying and expecting to be respawned by init.
 
 Launch the beanstalkd server on localhost only:
 
@@ -60,17 +62,17 @@ Launch the alarm daemon:
 Launch the consumer applications (you can run as many or as few of these
 applications to meet your requirements):
 
-    # For debugging/testing
+    # For debugging/testing only, don't run this as a daemon :-/
     ./cli.py
 
-    # For SMS alerting
-    ./smsd.py
+    # For email-based alerting
+    ./alert_email.py
 
 
 
 # Supported Hardware
 
-* Envisalink EVL-4 with DSC PowerSeries (envisalinkd)
+* Envisalink EVL-4 with DSC PowerSeries (envisalinkd.py)
 
 
 

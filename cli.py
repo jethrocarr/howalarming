@@ -28,6 +28,12 @@ class AntistealCLI:
 			self.beanstalk_tubes_commands	= self.config['beanstalkd']['tubes']['commands']
 			self.beanstalk_tubes_events		= self.config['beanstalkd']['tubes']['events']
 
+			# Make sure the queue we listen to exists
+			if 'cli' not in self.config['beanstalkd']['tubes']['events']:
+				print "Fatal: Config must define the cli event queue for this application."
+				raise BaseException
+
+
 		except IOError:
 			print 'Fatal: Could not open configuration file'
 			raise
@@ -42,7 +48,8 @@ class AntistealCLI:
 			self.beanstalk = beanstalkc.Connection(host=self.beanstalk_host, port=self.beanstalk_port)
 			print 'system: Beanstalkd connected on ' + str(self.beanstalk_host) + ' on port ' + str(self.beanstalk_port)
 		except socket.error, (value,message):
-			self.printFatal(message)
+			print "Fatal: Unable to connect to beanstalkd"
+			raise
 
 
 	def beanstalk_poll(self):

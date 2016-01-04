@@ -24,4 +24,15 @@ envisalinkd:
     '005': Fire Alarm
     '006': Tamper Switches
 
-
+# Optional: Email Gateway
+alert_email:
+  smtp_host: localhost
+  smtp_port: 25
+  addr_from: alarm@example.com
+  addr_to: heythatsmytv@example.com
+  triggers:
+    - alarm
+    - recovery
+    - fault
+    - armed
+    - disarmed
