@@ -1,0 +1,27 @@
+---
+# Required: Beanstalld Settings
+beanstalkd:
+  host: 127.0.0.1 # matches -l param for beanstalkd
+  port: 11300     # matches -p param for beanstalkd
+  tubes:
+    commands:
+      - commands
+    events:
+      - cli
+
+# Optional: Integration for Envisalink alarm modules
+envisalinkd:
+  host: 192.168.1.1
+  port: 4025
+  password: durp12
+  code_master: 1234
+  code_installer: 5555
+  zones:
+    '001': Study PIR
+    '002': Dungeon PIR
+    '003': Bedroom PIR
+    '004': Bomb Shelter PIR
+    '005': Fire Alarm
+    '006': Tamper Switches
+
+
