@@ -31,10 +31,11 @@ Copy `config.example.yaml` to `config.yaml`. This file should be used by all
 the applications, see the relevant sections for each application as needed.
 
 Dependencies:
+
     # via native OS package manager (eg apt-get, yum, brew):
     beanstalkd
     python-2.7 (probably already on as default, check with python --version)
-
+    
     # for Python apps:
     pip install pyyaml
     pip install beanstalkc
