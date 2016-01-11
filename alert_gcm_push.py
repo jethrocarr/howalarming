@@ -76,7 +76,7 @@ class HowAlarming:
     def beanstalk_poll(self):
         # Poll for any commands in the event tube for CLI (aptly named "cli")
 
-        self.beanstalk.watch('alert_email')
+        self.beanstalk.watch('alert_gcm')
         job = self.beanstalk.reserve() # blocking call
 
         if job:
