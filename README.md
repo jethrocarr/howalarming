@@ -39,9 +39,11 @@ Dependencies:
     # for Python apps:
     pip install pyyaml
     pip install beanstalkc
+    pip install python-gcm (for alert_gcm_push.py only)
 
 Tested on UNIX platforms - in theory it might run OK on Windows, feel free to
 submit pull requests fixing any OS compatibility issues if this floats your boat.
+
 
 # Running
 
@@ -68,6 +70,24 @@ applications to meet your requirements):
 
     # For email-based alerting
     ./alert_email.py
+
+    # For Google Compute Messaging alerting (to companion Android app)
+    ./alert_gcm_push.py
+
+
+# Mobile Applications (via GCM)
+
+The Google Compute Messaging (GCM) application is intended for pushing alarm
+events to native mobile applications such as the Android companion application.
+
+The following is the list of compatible applications:
+
+* https://github.com/jethrocarr/howalarming-android
+
+The applications include instructions around the provisioning of GCM, but
+generally you'll need a project setup in Google Developer Console with GCM
+enabled in order to get an API key and to get a configuration file for the
+mobile applications.
 
 
 

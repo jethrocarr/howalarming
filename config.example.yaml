@@ -30,9 +30,31 @@ alert_email:
   smtp_port: 25
   addr_from: alarm@example.com
   addr_to: heythatsmytv@example.com
+  # You will want to be selective with triggers, recommend leaving these defaults alone.
   triggers:
     - alarm
     - recovery
     - fault
     - armed
     - disarmed
+
+# Optional: Google Cloud Messaging (Android + iOS apps)
+# Refer to the README for more information.
+alert_gcm:
+  # API key is provided by the Google Project credentials section once Google Cloud Messaging (GCM) has been enabled.
+  api_key: xyz
+
+  # Registration Tokens can only be obtained from devices. One device == one token.
+  registration_tokens:
+    - 'abc'
+    - '123'
+
+  # You will want to be selective with triggers, recommend leaving these defaults alone.
+  triggers:
+    - alarm
+    - recovery
+    - fault
+    - armed
+    - disarmed
+
+
