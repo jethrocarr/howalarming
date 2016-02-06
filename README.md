@@ -75,6 +75,13 @@ applications to meet your requirements):
     ./alert_gcm.py
 
 
+# Config Management Support (Puppet)
+
+Alternatively you can install and run HowAlarming via the author's Puppet
+module available either on [Github](https://github.com/jethrocarr/puppet-howalarming)
+or at the [PuppetForge](https://forge.puppetlabs.com/jethrocarr/howalarming).
+
+
 # Mobile Applications (via GCM)
 
 The Google Compute Messaging (GCM) application is intended for pushing alarm
