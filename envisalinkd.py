@@ -36,6 +36,12 @@ class Envisalink:
             self.code_installer = self.config['envisalinkd']['code_installer']
             self.zones          = self.config['envisalinkd']['zones']
 
+            # Because the zone ids are 3 digit long ints, if the user hasn't
+            # quoted them in the YAML, they get convered to ints and then
+            # break. Hence we convert them to strings and pad with zeros to
+            # support either int or string input.
+            self.zones = {str(k).zfill(3):str(v) for k,v in self.zones.items()}
+
             # Beanstalkd Message Queue settings
             self.beanstalk_host             = self.config['beanstalkd']['host']
             self.beanstalk_port             = int(self.config['beanstalkd']['port'])
