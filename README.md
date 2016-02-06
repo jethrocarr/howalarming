@@ -72,7 +72,7 @@ applications to meet your requirements):
     ./alert_email.py
 
     # For Google Compute Messaging alerting (to companion Android app)
-    ./alert_gcm_push.py
+    ./alert_gcm.py
 
 
 # Mobile Applications (via GCM)
