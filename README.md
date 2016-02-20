@@ -90,6 +90,7 @@ events to native mobile applications such as the Android companion application.
 The following is the list of compatible applications:
 
 * https://github.com/jethrocarr/howalarming-android
+* https://github.com/jethrocarr/howalarming-ios
 
 The applications include instructions around the provisioning of GCM, but
 generally you'll need a project setup in Google Developer Console with GCM
