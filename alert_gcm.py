@@ -89,9 +89,22 @@ class HowAlarming:
                     print job.body
 
                     # We send the message in the exact same JSON format, keeps things simple if all the
-                    # HowAlarming applications respect the same format.
+                    # HowAlarming applications respect the same format. However we do also need to attach
+		    # a set of notification fields for use with APNS (for any iOS devices) which doesn't
+		    # do all the same smarts app-side like Android :-(
+
+		    notification = {
+                      "sound": "default",
+                      "badge": "0",
+                      "alert": {
+                        "title": "HowAlarming Event: " + alarm_event["type"],
+                        "body":  alarm_event["message"],
+                      }
+		    }
+
+		    # Send the message via GCM
                     gcm      = GCM(self.gcm_api_key)
-                    response = gcm.json_request(registration_ids=self.gcm_registration_tokens, data=alarm_event)
+                    response = gcm.json_request(registration_ids=self.gcm_registration_tokens, data=alarm_event, notification=notification)
 
 
                     # Evaluate response.
