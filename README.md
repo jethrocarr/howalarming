@@ -65,8 +65,9 @@ Launch the alarm daemon:
 Launch the consumer applications (you can run as many or as few of these
 applications to meet your requirements):
 
-    # For debugging/testing only, don't run this as a daemon :-/
+    # For debugging/testing only, don't run these daemons :-/
     ./cli.py
+    ./simulate.py
 
     # For email-based alerting
     ./alert_email.py
