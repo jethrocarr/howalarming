@@ -58,3 +58,18 @@ alert_gcm:
     - disarmed
 
 
+# Optional: Plivo
+# Plivo is a text-to-voice phone calling service, see www.plivo.com, it's a
+# good option for getting voice calls to your mobile in event of an alarm.
+alert_plivo:
+  auth_id: SETME
+  auth_token: SETME
+  call_from: 666
+  call_to:
+   - 123456789
+  triggers:
+  - alarm
+  - recovery
+  - fault
+
+

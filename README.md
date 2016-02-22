@@ -5,6 +5,9 @@ of house alarm systems (this includes receiving alerts, but also sending
 instructions) making it easy to integrate alarm IP modules with other systems
 and writing various support applications.
 
+Currently it includes support for Envisalink enabled alarm modules and alerting
+via email, phone calls or mobile apps via push messages.
+
 WARNING: DO NOT USE THIS SYSTEM FOR ANY LIFE THREATENING EVENT INCLUDING FIRE OR
 MEDICAL ALERTING. THERE WILL BE BUGS.
 
@@ -40,6 +43,7 @@ Dependencies:
     pip install pyyaml
     pip install beanstalkc
     pip install python-gcm (for alert_gcm_push.py only)
+    pip install plivo (for alert_plivo.py only)
 
 Tested on UNIX platforms - in theory it might run OK on Windows, feel free to
 submit pull requests fixing any OS compatibility issues if this floats your boat.
@@ -74,6 +78,9 @@ applications to meet your requirements):
 
     # For Google Compute Messaging alerting (to companion Android app)
     ./alert_gcm.py
+
+    # For Plivo alerting (text to speech global voice calling)
+    ./alert_plivo.py
 
 
 # Config Management Support (Puppet)
