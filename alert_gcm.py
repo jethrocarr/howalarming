@@ -17,6 +17,7 @@
 # Refer to the README for more information.
 #
 
+import os
 import socket
 import sys
 import time
@@ -31,6 +32,9 @@ import json
 import yaml         # requires pyyaml third party package
 import beanstalkc   # requires beanstalkc third party package
 from gcm import GCM # requires python-gcm third party package
+
+# Unbuffered Logging
+sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
 class HowAlarming:
 

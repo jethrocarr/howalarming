@@ -9,6 +9,7 @@
 # Based on source code by dumbo25 at https://github.com/dumbo25/ev3_cmd
 #
 
+import os
 import socket
 import sys
 import time
@@ -21,6 +22,9 @@ import threading
 import json
 import yaml         # requires pyyaml third party package
 import beanstalkc   # requires beanstalkc third party package
+
+# Unbuffered Logging
+sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
 class Envisalink:
     def __init__(self):

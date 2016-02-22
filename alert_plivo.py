@@ -8,6 +8,7 @@
 # alerts for 'alarm', 'recovery' and 'fault'
 #
 
+import os
 import socket
 import sys
 import time
@@ -23,7 +24,9 @@ import yaml         # requires pyyaml third party package
 import beanstalkc   # requires beanstalkc third party package
 
 import plivo        # required third party package
-#import plivoxml     # required third party package
+
+# Unbuffered Logging
+sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
 class HowAlarming:
 

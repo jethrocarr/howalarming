@@ -11,6 +11,7 @@
 # 'armed' and 'disarmed' events as a way of testing it out.
 #
 
+import os
 import socket
 import sys
 import time
@@ -24,6 +25,9 @@ import email.utils
 import json
 import yaml         # requires pyyaml third party package
 import beanstalkc   # requires beanstalkc third party package
+
+# Unbuffered Logging
+sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
 class HowAlarming:
 
