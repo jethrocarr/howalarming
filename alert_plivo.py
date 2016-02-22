@@ -91,7 +91,7 @@ class HowAlarming:
                         # not the worst either given the high awareness of API changes and any
                         # breakages. There's no way to have Plivo play a message without doing
                         # a callback either. :-(
-                        message = 'https://raw.githubusercontent.com/jethrocarr/howalarming/master/resources/plivo/event.xml'
+                        message_url = 'https://raw.githubusercontent.com/jethrocarr/howalarming/master/resources/plivo/event.xml'
 
                         if alarm_event['type'] == 'alarm':
                             message_url = 'https://raw.githubusercontent.com/jethrocarr/howalarming/master/resources/plivo/alarm.xml'
