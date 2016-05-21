@@ -100,10 +100,8 @@ class HowAlarming:
 		    notification = {
                       "sound": "default",
                       "badge": "0",
-                      "alert": {
-                        "title": "HowAlarming Event: " + alarm_event["type"],
-                        "body":  alarm_event["message"],
-                      }
+                      "title": "HowAlarming Event: " + alarm_event["type"],
+                      "body":  alarm_event["message"],
 		    }
 
 		    # Send the message via GCM
