@@ -125,7 +125,7 @@ The event tubes (queues in beanstalkd speak) contain messages from the alarm
 integrator application for all events reported by the alarm system. These take
 the form of the following JSON message:
 
-    {"type": "alarm", "code": "123", "message": "event details string", "raw": "123ABC", }
+    {"type": "alarm", "code": "123", "message": "event details string", "raw": "123ABC", timestamp: '1199145600'}
 
 Because alarm systems are complex beasts with many hundreds of response types,
 we also add a type field indicating the nature of the event. You can then choose
@@ -160,7 +160,7 @@ as arm/disarm, status etc.
 These commands can be one of two formats, either a JSON command like the
 following:
 
-    {"code": "321", "message": "Human readable reference", "data": "Optional data/values to be sent"}
+    {"code": "321", "message": "Human readable reference", "data": "Optional data/values to be sent", timestamp: '1199145600'}
 
 Or a "simple" string command. These simple commands should be supported by all
 alarm integrators making it easy to add generic support for all supported alarm

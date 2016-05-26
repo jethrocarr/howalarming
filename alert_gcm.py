@@ -102,6 +102,7 @@ class HowAlarming:
                       "badge": "0",
                       "title": "HowAlarming Event: " + alarm_event["type"],
                       "body":  alarm_event["message"],
+		      "timestamp":  alarm_event["timestamp"]
 		    }
 
 		    # Send the message via GCM

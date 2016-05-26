@@ -300,7 +300,7 @@ class Envisalink:
                 # We send the commands to the alarm, but we also advise the
                 # listening applications on what commands we are running.
                 self.socket.send(''.join(cmd))
-                self.beanstalk_push({'type': 'command', 'raw': cmd, 'code': cmd, 'message': msg})
+		self.beanstalk_push({'type': 'command', 'raw': cmd, 'code': cmd, 'message': msg, 'timestamp': int(time.time())})
             except socket.error, err:
                 e.printFatal('socket error '+ str(err[0]) + ' in sendCommand ' )
 

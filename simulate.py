@@ -60,24 +60,26 @@ class HowAlarmingCLI:
                 k = sys.stdin.readline()
                 k = k[:len(k)-1]
 
+		timestamp = str(int(time.time()))
+
                 if k == 'command':
-                    self.beanstalk_push('{"type": "command", "code": "123", "message": "Arm alarm command issued", "raw": "123 command issued"}')
+                    self.beanstalk_push('{"type": "command", "code": "123", "message": "Arm alarm command issued", "raw": "123 command issued", "timestamp": "'+ timestamp +'"}')
                 elif k == 'info':
-                    self.beanstalk_push('{"type": "info", "code": "236", "message": "Some kind of general information event occured", "raw": "236 INFO GENERAL"}')
+                    self.beanstalk_push('{"type": "info", "code": "236", "message": "Some kind of general information event occured", "raw": "236 INFO GENERAL", "timestamp": "'+ timestamp +'"}')
                 elif k == 'armed':
-                    self.beanstalk_push('{"type": "armed", "code": "535", "message": "Alarm now armed", "raw": "535 ARMED"}')
+                    self.beanstalk_push('{"type": "armed", "code": "535", "message": "Alarm now armed", "raw": "535 ARMED", "timestamp": "'+ timestamp +'"}')
                 elif k == 'disarmed':
-                    self.beanstalk_push('{"type": "disarmed", "code": "525", "message": "Alarm is disarmed", "raw": "525 disarmed"}')
+                    self.beanstalk_push('{"type": "disarmed", "code": "525", "message": "Alarm is disarmed", "raw": "525 disarmed", "timestamp": "'+ timestamp +'"}')
                 elif k == 'response':
-                    self.beanstalk_push('{"type": "response", "code": "123", "message": "ACK of command", "raw": "123 response"}')
+                    self.beanstalk_push('{"type": "response", "code": "123", "message": "ACK of command", "raw": "123 response", "timestamp": "'+ timestamp +'"}')
                 elif k == 'alarm':
-                    self.beanstalk_push('{"type": "alarm", "code": "911", "message": "Alarm triggered in sector 5", "raw": "911 ALARM ALARM"}')
+                    self.beanstalk_push('{"type": "alarm", "code": "911", "message": "Alarm triggered in sector 5", "raw": "911 ALARM ALARM", "timestamp": "'+ timestamp +'"}')
                 elif k == 'recovery':
-                    self.beanstalk_push('{"type": "recovery", "code": "1332", "message": "Alarm recovered", "raw": "1332 recovery"}')
+                    self.beanstalk_push('{"type": "recovery", "code": "1332", "message": "Alarm recovered", "raw": "1332 recovery", "timestamp": "'+ timestamp +'"}')
                 elif k == 'fault':
-                    self.beanstalk_push('{"type": "fault", "code": "666", "message": "Flux Capaciter Failed", "raw": "666 FLUXERR"}')
+                    self.beanstalk_push('{"type": "fault", "code": "666", "message": "Flux Capaciter Failed", "raw": "666 FLUXERR", "timestamp": "'+ timestamp +'"}')
                 elif k == 'unknown':
-                    self.beanstalk_push('{"type": "unknown", "code": "???", "message": "unknown", "raw": "Unknown error, there\s no helping you now son"}')
+                    self.beanstalk_push('{"type": "unknown", "code": "???", "message": "unknown", "raw": "Unknown error, there\s no helping you now son", "timestamp": "'+ timestamp +'"}')
                 else:
                     print "Request a specific alarm event to simulate from: [command|info|armed|disarmed|response|alarm|recovery|fault|unknown]"
         return
