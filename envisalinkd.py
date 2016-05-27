@@ -758,7 +758,7 @@ class Envisalink:
             # Assembled completed response
             self.printNormal('received ['+ event_type +'][' + word + ']: ' + msg)
 
-            response = {'type': event_type, 'raw': word, 'code': cmd, 'message': msg}
+            response = {'type': event_type, 'raw': word, 'code': cmd, 'message': msg, 'timestamp': int(time.time())}
             self.beanstalk_push(response)
 
         return
