@@ -107,7 +107,7 @@ class HowAlarming:
 
 		    # Send the message via GCM
                     gcm      = GCM(self.gcm_api_key)
-                    response = gcm.json_request(registration_ids=self.gcm_registration_tokens, data=alarm_event, notification=notification)
+                    response = gcm.json_request(registration_ids=self.gcm_registration_tokens, data=alarm_event, notification=notification, priority='high', delay_while_idle=False)
 
 
                     # Evaluate response.
