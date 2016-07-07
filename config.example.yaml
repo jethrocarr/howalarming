@@ -41,7 +41,8 @@ alert_email:
 # Optional: Google Cloud Messaging (Android + iOS apps)
 # Refer to the README for more information.
 alert_gcm:
-  # API key is provided by the Google Project credentials section once Google Cloud Messaging (GCM) has been enabled.
+  # Sender ID and API key is provided by the Google Project credentials section once Google Cloud Messaging (GCM) has been enabled.
+  sender_id: 123
   api_key: xyz
 
   # Registration Tokens can only be obtained from devices. One device == one token.

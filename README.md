@@ -42,8 +42,10 @@ Dependencies:
     # for Python apps:
     pip install pyyaml
     pip install beanstalkc
-    pip install python-gcm (for alert_gcm_push.py only)
     pip install plivo (for alert_plivo.py only)
+
+    # for the GCM server
+    Java 7+ (OpenJDK or Oracle)
 
 Tested on UNIX platforms - in theory it might run OK on Windows, feel free to
 submit pull requests fixing any OS compatibility issues if this floats your boat.
@@ -77,6 +79,7 @@ applications to meet your requirements):
     ./alert_email.py
 
     # For Google Compute Messaging alerting (to companion Android/iOS app)
+    # Note that this is a python wrapper for the Java app.
     ./alert_gcm.py
 
     # For Plivo alerting (text to speech global voice calling)
@@ -95,6 +98,12 @@ or at the [PuppetForge](https://forge.puppetlabs.com/jethrocarr/howalarming).
 The Google Compute Messaging (GCM) application is intended for pushing alarm
 events to native mobile applications such as the Android companion application.
 
+The source code for this application is available on
+[Github](https://github.com/jethrocarr/howalarming-gcm) and a prebuilt binary
+exists in `resources/gcmserver`. The `alert_gcm.py` application exists purely
+as a wrapper which launches the Java app with params from the YAML
+configuration.
+
 The following is the list of compatible applications:
 
 * https://github.com/jethrocarr/howalarming-android
@@ -105,12 +114,6 @@ generally you'll need a project setup in Google Developer Console with GCM
 enabled in order to get an API key and to get a configuration file for the
 mobile applications.
 
-
-The version `alert_gcm.py` that ships with this repo is a one-way send only
-service. There is a more powerful bidirectional Java daemon that allows
-communication back from the app for activities such as arming/disarming.
-
-https://github.com/jethrocarr/howalarming-gcm
 
 
 
