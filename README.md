@@ -76,7 +76,7 @@ applications to meet your requirements):
     # For email-based alerting
     ./alert_email.py
 
-    # For Google Compute Messaging alerting (to companion Android app)
+    # For Google Compute Messaging alerting (to companion Android/iOS app)
     ./alert_gcm.py
 
     # For Plivo alerting (text to speech global voice calling)
@@ -104,6 +104,13 @@ The applications include instructions around the provisioning of GCM, but
 generally you'll need a project setup in Google Developer Console with GCM
 enabled in order to get an API key and to get a configuration file for the
 mobile applications.
+
+
+The version `alert_gcm.py` that ships with this repo is a one-way send only
+service. There is a more powerful bidirectional Java daemon that allows
+communication back from the app for activities such as arming/disarming.
+
+https://github.com/jethrocarr/howalarming-gcm
 
 
 
@@ -160,7 +167,7 @@ as arm/disarm, status etc.
 These commands can be one of two formats, either a JSON command like the
 following:
 
-    {"code": "321", "message": "Human readable reference", "data": "Optional data/values to be sent", timestamp: '1199145600'}
+    {"type": "command", "code": "321", "message": "Human readable reference", "data": "Optional data/values to be sent", timestamp: '1199145600'}
 
 Or a "simple" string command. These simple commands should be supported by all
 alarm integrators making it easy to add generic support for all supported alarm
