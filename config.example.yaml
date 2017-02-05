@@ -73,4 +73,12 @@ alert_plivo:
   - recovery
   - fault
 
-
+# Optional: Alert URL
+# Send alerts to a specific URL endpoint. Multple URLs can be defined, for each
+# one the base URL will be used with the event type appended to the end.
+alert_url:
+  urls:
+    - http://example.com/arming/
+  triggers:
+    - armed
+    - disarmed
