@@ -45,19 +45,6 @@ alert_gcm:
   sender_id: 123
   api_key: xyz
 
-  # Registration Tokens can only be obtained from devices. One device == one token.
-  registration_tokens:
-    - 'abc'
-    - '123'
-
-  # You will want to be selective with triggers, recommend leaving these defaults alone.
-  triggers:
-    - alarm
-    - recovery
-    - fault
-    - armed
-    - disarmed
-
 
 # Optional: Plivo
 # Plivo is a text-to-voice phone calling service, see www.plivo.com, it's a
