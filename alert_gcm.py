@@ -39,8 +39,6 @@ try:
     # GCM
     gcm_api_key                = config['alert_gcm']['api_key']
     gcm_sender_id              = config['alert_gcm']['sender_id']
-    gcm_registration_tokens    = config['alert_gcm']['registration_tokens']
-    triggers                   = config['alert_gcm']['triggers']
 
     # Make sure the queue we listen to exists
     if 'alert_gcm' not in config['beanstalkd']['tubes']['events']:
