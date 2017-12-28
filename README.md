@@ -38,7 +38,7 @@ Dependencies:
     # via native OS package manager (eg apt-get, yum, brew):
     beanstalkd
     python-2.7 (probably already on as default, check with python --version)
-    
+
     # for Python apps:
     pip install pyyaml
     pip install beanstalkc
@@ -93,10 +93,11 @@ module available either on [Github](https://github.com/jethrocarr/puppet-howalar
 or at the [PuppetForge](https://forge.puppetlabs.com/jethrocarr/howalarming).
 
 
-# Mobile Applications (via GCM)
+# Mobile Applications (via FCM/GCM)
 
-The Google Compute Messaging (GCM) application is intended for pushing alarm
-events to native mobile applications such as the Android companion application.
+The FCM/GCM application is intended for pushing alarm events to native mobile
+applications such as the Android and iOS HowAlarming apps. This uses the Google
+Firebase FCM (formerly GCM) service as it's only dependency for message delivery.
 
 The source code for this application is available on
 [Github](https://github.com/jethrocarr/howalarming-gcm) and a prebuilt binary
@@ -109,11 +110,13 @@ The following is the list of compatible applications:
 * https://github.com/jethrocarr/howalarming-android
 * https://github.com/jethrocarr/howalarming-ios
 
-The applications include instructions around the provisioning of GCM, but
-generally you'll need a project setup in Google Developer Console with GCM
-enabled in order to get an API key and to get a configuration file for the
-mobile applications.
+Of the two, the iOS app is the one getting actively maintained and tested right
+now and features some nice functionality such as remote arm/disarm of the alarm.
 
+The applications include instructions around the provisioning of FCM, but
+generally you'll need a project setup in Google Firebase Console with Cloud
+Messaging enabled in order to get an API key and a configuration file for the
+mobile applications.
 
 
 
